@@ -18,8 +18,8 @@ function ess_tabel_currenty_view()
         <thead>
           <tr>
             <th>Waluta</th>
-            <th>Buy</th>
-            <th>Sell</th>
+            <th>Kupno</th>
+            <th>Sprzedaż</th>
           </tr>
         </thead>
         <tbody>
