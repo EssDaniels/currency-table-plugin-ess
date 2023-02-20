@@ -6,6 +6,9 @@ Version: 1.0
 Author: Dawid Skibiński
 */
 
+header('Content-Type: text/html; charset=utf-8');
+
+
 define('ESS12_PLUGIN', __FILE__);
 
 define('ESS12_PLUGIN_DIR', untrailingslashit(dirname(ESS12_PLUGIN)));
