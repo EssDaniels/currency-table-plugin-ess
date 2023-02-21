@@ -34,6 +34,7 @@ class KursyWalut_Settings_Page
         <?php
         settings_fields('KursyWalut');
         do_settings_sections('KursyWalut');
+        wp_nonce_field('kursy_walut_save_settings', 'kursy_walut_nonce');
         submit_button();
         ?>
       </form>
@@ -76,6 +77,24 @@ class KursyWalut_Settings_Page
                 'label' => 'Włącz style',
                 'id' => 'ess_style_set',
                 'type' => 'checkbox',
+              ),
+              array(
+                'section' => 'KursyWalut_section',
+                'label' => 'Nazwa pierwszej kolumny',
+                'id' => 'ess_name_col_1',
+                'type' => 'text',
+              ),
+              array(
+                'section' => 'KursyWalut_section',
+                'label' => 'Nazwa drugiej kolumny',
+                'id' => 'ess_name_col_2',
+                'type' => 'text',
+              ),
+              array(
+                'section' => 'KursyWalut_section',
+                'label' => 'Nazwa trzeciej kolumny',
+                'id' => 'ess_name_col_3',
+                'type' => 'text',
               )
             );
             foreach ($fields as $field) {
@@ -97,23 +116,23 @@ class KursyWalut_Settings_Page
                 printf(
                   '<input %s id="%s" name="%s" type="checkbox" value="1">',
                   $value === '1' ? 'checked' : '',
-                  $field['id'],
-                  $field['id']
+                  htmlspecialchars($field['id']),
+                  htmlspecialchars($field['id'])
                 );
                 break;
 
               default:
                 printf(
                   '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" />',
-                  $field['id'],
-                  $field['type'],
-                  $placeholder,
-                  $value
+                  htmlspecialchars($field['id']),
+                  htmlspecialchars($field['type']),
+                  htmlspecialchars($placeholder),
+                  htmlspecialchars($value)
                 );
             }
             if (isset($field['desc'])) {
               if ($desc = $field['desc']) {
-                printf('<p class="description">%s </p>', $desc);
+                printf('<p class="description">%s </p>', htmlspecialchars($desc));
               }
             }
           }
